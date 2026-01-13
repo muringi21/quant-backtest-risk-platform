@@ -3,7 +3,7 @@ name = "qbrp"
 version = "0.1.0"
 description = "Quant Backtest & Risk Platform (v0.1)"
 requires-python = ">=3.11"
-dependencies = ["numpy>=1.26", "pandas>=2.2", "typer>=0.12"]
+dependencies = ["numpy>=1.26", "pandas>=2.2", "typer>=0.12", "matplotlib>=3.8"]
 
 [project.optional-dependencies]
 dev = ["pytest>=8.0", "ruff>=0.6"]
