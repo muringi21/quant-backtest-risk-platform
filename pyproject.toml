@@ -1,1 +1,16 @@
+[project]
+name = "qbrp"
+version = "0.1.0"
+description = "Quant Backtest & Risk Platform (v0.1)"
+requires-python = ">=3.11"
+dependencies = ["numpy>=1.26", "pandas>=2.2", "typer>=0.12"]
 
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.6"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
