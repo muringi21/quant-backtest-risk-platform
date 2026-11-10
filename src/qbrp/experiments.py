@@ -66,8 +66,8 @@ REGIMES: dict[str, Regime] = {
     ),
     "no_edge": Regime(
         "no_edge",
-        "Zero-drift random walk: every rule, long or short, has an expected return "
-        "of zero before costs.",
+        "Random walk with zero log drift: no rule can predict returns, so long-short "
+        "rules have a true Sharpe of about zero before costs.",
         drift=0.0,
     ),
 }
