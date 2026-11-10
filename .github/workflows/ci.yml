@@ -1,14 +1,21 @@
 name: ci
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
 
 jobs:
   test:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12", "3.13"]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: ${{ matrix.python-version }}
+          cache: pip
       - name: Install
         run: |
           python -m pip install --upgrade pip
@@ -16,4 +23,10 @@ jobs:
       - name: Lint
         run: ruff check .
       - name: Tests
-        run: pytest -q
+        run: pytest -q --cov=qbrp --cov-report=term-missing
+      - name: CLI smoke test
+        run: |
+          qbrp --version
+          qbrp backtest
+          qbrp backtest --csv examples/synthetic_prices.csv --fast 10 --slow 40 --json
+          qbrp experiment all --out /tmp/qbrp-results --seeds 3 --n-bars 600 --no-plots
