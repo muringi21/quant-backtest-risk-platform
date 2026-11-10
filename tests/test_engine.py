@@ -97,7 +97,8 @@ def test_no_lookahead_future_prices_cannot_change_past_returns():
     k = 250
     rng = np.random.default_rng(0)
     tampered = close.copy()
-    tampered.iloc[k + 1 :] = close.iloc[k] * np.exp(np.cumsum(rng.normal(0, 0.05, len(close) - k - 1)))
+    shocks = rng.normal(0, 0.05, len(close) - k - 1)
+    tampered.iloc[k + 1 :] = close.iloc[k] * np.exp(np.cumsum(shocks))
     for lag in (0, 1, 3):
         cfg = MACrossConfig(10, 30)
         a = run_backtest(close, ma_crossover(close, cfg), fee_bps=5.0, execution_lag=lag)

@@ -96,7 +96,9 @@ def make_sample_prices(
     try:
         idx = pd.bdate_range(start=pd.Timestamp(start), periods=n, name="date")
     except (ValueError, TypeError) as exc:
-        raise BacktestInputError(f"start must be a date such as '2020-01-01', got {start!r}") from exc
+        raise BacktestInputError(
+            f"start must be a date such as '2020-01-01', got {start!r}"
+        ) from exc
     return pd.DataFrame({"close": price}, index=idx)
 
 
