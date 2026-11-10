@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 
+
 def daily_returns(prices: pd.Series) -> pd.Series:
     return prices.pct_change().fillna(0.0).rename("asset_ret")
 

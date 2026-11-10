@@ -1,8 +1,8 @@
 import typer
 
 from .data import make_sample_prices
-from .strategies import MACrossConfig, ma_crossover
 from .engine import run_backtest
+from .strategies import MACrossConfig, ma_crossover
 
 app = typer.Typer(no_args_is_help=True)
 

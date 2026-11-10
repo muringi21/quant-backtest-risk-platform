@@ -1,5 +1,7 @@
 import pandas as pd
+
 from qbrp.metrics import max_drawdown, sharpe_ratio
+
 
 def test_max_drawdown_non_positive():
     eq = pd.Series([1.0, 1.1, 1.05, 1.2, 1.15])

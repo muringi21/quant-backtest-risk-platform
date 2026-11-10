@@ -1,7 +1,9 @@
 from dataclasses import dataclass
+
 import pandas as pd
 
 from .metrics import daily_returns, equity_curve, max_drawdown, sharpe_ratio
+
 
 @dataclass
 class BacktestResult:

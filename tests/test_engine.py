@@ -1,6 +1,7 @@
 from qbrp.data import make_sample_prices
-from qbrp.strategies import MACrossConfig, ma_crossover
 from qbrp.engine import run_backtest
+from qbrp.strategies import MACrossConfig, ma_crossover
+
 
 def test_backtest_runs():
     df = make_sample_prices(n=200)
